@@ -16,6 +16,10 @@ groupadd --gid $GROUP_ID devops && \
 useradd --uid $USER_ID --gid $GROUP_ID --groups wheel --create-home devops
 RUN pacman --noconfirm -S python python-pip \
  && pip3 install ansible
+# install more tools
+RUN pacman --noconfirm -S subfinder amass assetfinder sublist3r wget curl
+RUN wget https://raw.githubusercontent.com/janmasarik/resolvers/master/resolvers.txt -O /home/devops/resolvers.txt
+RUN wget https://github.com/danielmiessler/SecLists/raw/master/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -O /home/devops/deepmagic.com-prefixes-top50000.txt
 WORKDIR /home/devops
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash", "-i"]
