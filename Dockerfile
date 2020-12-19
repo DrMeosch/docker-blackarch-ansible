@@ -20,8 +20,8 @@ RUN pacman --noconfirm -S python python-pip \
 RUN pacman --noconfirm -S subfinder amass assetfinder sublist3r wget curl
 RUN wget https://raw.githubusercontent.com/janmasarik/resolvers/master/resolvers.txt -O /home/devops/resolvers.txt
 RUN wget https://github.com/danielmiessler/SecLists/raw/master/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -O /home/devops/deepmagic.com-prefixes-top50000.txt
-RUN pacman --noconfirm -S httpx nuclei
-RUN nuclei -update-templates
+RUN pacman --noconfirm -S httpx nuclei git
+RUN cd /home/devops && git clone https://github.com/projectdiscovery/nuclei-templates && chown -R devops:devops nuclei-templates
 WORKDIR /home/devops
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash", "-i"]
