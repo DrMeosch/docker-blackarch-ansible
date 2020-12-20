@@ -23,7 +23,6 @@ RUN wget https://github.com/danielmiessler/SecLists/raw/master/Discovery/DNS/dee
 # RUN pacman --noconfirm -S httpx nuclei git
 RUN pacman --noconfirm -S httpx git go
 RUN wget https://github.com/projectdiscovery/nuclei/releases/download/v2.2.0/nuclei_2.2.0_linux_amd64.tar.gz && tar -C /usr/bin -zxvf nuclei_2.2.0_linux_amd64.tar.gz nuclei && chmod 755 /usr/bin/nuclei
-RUN cd /home/devops && git clone https://github.com/projectdiscovery/nuclei-templates && chown -R devops:devops nuclei-templates
 WORKDIR /home/devops
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash", "-i"]
