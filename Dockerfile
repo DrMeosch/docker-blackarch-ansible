@@ -26,4 +26,3 @@ RUN wget https://github.com/projectdiscovery/nuclei/releases/download/v2.2.0/nuc
 WORKDIR /home/devops
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["bash", "-i"]
-
